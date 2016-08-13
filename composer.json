@@ -1,18 +1,18 @@
 {
-    "name": ":vendor/:package_name",
+    "name": "jeroenherczeg/dog",
     "type": "library",
-    "description": ":package_description",
+    "description": "A User Follow Package for Laravel 5",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "jeroenherczeg",
+        "dog"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/jeroenherczeg/dog",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Jeroen Herczeg",
+            "email": "jeroen@herczeg.be",
+            "homepage": "https://herczeg.be",
             "role": "Developer"
         }
     ],
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
+            "jeroenherczeg\\dog\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "jeroenherczeg\\dog\\": "tests"
         }
     },
     "scripts": {
