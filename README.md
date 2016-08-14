@@ -1,5 +1,4 @@
-# Dog
-## A User Follow Package for Laravel 5
+# A User Follow Package for Laravel 5
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -22,8 +21,23 @@ $ composer require jeroenherczeg/dog
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+Follow a user.
+$user->follow($user2);
+
+Unfollow a user.
+$user->unfollow($user2);
+
+Check if user is following given user.
+$user->isFollowing($user2);
+
+Check if user is followed by given user.
+$user->isFollowedBy($user2);
+
+Followers relationship.
+$user->followers;
+
+Followings relationship.
+$user->followings;
 ```
 
 ## Change log
