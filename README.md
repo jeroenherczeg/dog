@@ -12,23 +12,32 @@ PSRs you support to avoid any confusion with users and contributors.
 
 ## Install
 
-Via Composer
+You can install the package via composer:
 
 ``` bash
 $ composer require jeroenherczeg/dog
 ```
 
-Add new provider to config/app.php
+Next, you must install the service provider:
 
 ``` php
- Jeroenherczeg\Dog\DogServiceProvider::class,
+// config/app.php
+'providers' => [
+    ...
+    Jeroenherczeg\Dog\DogServiceProvider::class,
+];
 ```
 
-Run next command to add necessary migrations to your project
+You can publish the migration with:
 
 ``` bash
-$ php artisan vendor:publish --provider="Jeroenherczeg\Dog\DogServiceProvider"
-$ php artisan migrate
+php artisan vendor:publish --provider="Jeroenherczeg\Dog\DogServiceProvider"
+```
+
+After the migration has been published you can create the `followers` table by running the migrations:
+
+```bash
+php artisan migrate
 ```
 
 Add the followable trait to the User model
