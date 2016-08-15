@@ -1,19 +1,15 @@
 <?php
+
 namespace Jeroenherczeg\Dog\Test;
 
 use App\Console\Kernel;
-use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\ClassFinder;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Testing\TestCase;
-use jeroenherczeg\dog\FollowServiceProvider;
+use Illuminate\Support\Facades\Hash;
+use Jeroenherczeg\Dog\FollowServiceProvider;
 
-/**
- * Run tests from root directory with
- * phpunit vendor/jeroenherczeg/dog/tests/
- * after installing to laravel project
- */
 class FollowableTest extends TestCase
 {
     public function test_user_can_follow_by_id()
@@ -82,7 +78,7 @@ class FollowableTest extends TestCase
      */
     public function createApplication()
     {
-        $app = require 'bootstrap/app.php';
+        $app = require __DIR__ . '/../vendor/laravel/laravel/bootstrap/app.php';
         $app->register(FollowServiceProvider::class);
         $app->make(Kernel::class)->bootstrap();
 
@@ -92,25 +88,49 @@ class FollowableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+
         $this->app['config']->set('database.default', 'sqlite');
         $this->app['config']->set('database.connections.sqlite.database', ':memory:');
+
         $this->migrate();
-        $this->fillUsers();
+        $this->createUsers();
     }
 
     public function migrate()
     {
         $fileSystem = new Filesystem;
         $classFinder = new ClassFinder;
+
         foreach ($fileSystem->files(database_path('migrations')) as $file) {
             $fileSystem->requireOnce($file);
             $migrationClass = $classFinder->findClass($file);
             (new $migrationClass)->up();
         }
+
+        $file = 'src/create_followers_table.php';
+        $fileSystem->requireOnce($file);
+        $packageMigrationClass = $classFinder->findClass($file);
+        (new $packageMigrationClass)->up();
     }
 
-    private function fillUsers()
+    private function createUsers()
     {
-        factory(User::class, 3)->create();
+        User::create([
+            'name' => 'Jeroen Herczeg',
+            'email' => 'jeroen@herczeg.be',
+            'password' => Hash::make('test')
+        ]);
+
+        User::create([
+            'name' => 'Taylor Otwell',
+            'email' => 'taylor@laravel.com',
+            'password' => Hash::make('test')
+        ]);
+
+        User::create([
+            'name' => 'Jeffrey Way',
+            'email' => 'jeffrey@laracasts.com',
+            'password' => Hash::make('test')
+        ]);
     }
 }
