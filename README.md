@@ -28,8 +28,18 @@ Run next command to add necessary migrations to your project
 
 ``` bash
 $ php artisan vendor:publish --provider="Jeroenherczeg\Dog\DogServiceProvider"
+$ php artisan migrate
 ```
 
+Add the followable trait to the User model
+``` php
+use Jeroenherczeg\Dog\Followable;
+
+class User extends Model
+{
+    use Followable;
+    ...
+```
 ## Usage
 
 ``` php
