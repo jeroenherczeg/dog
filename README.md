@@ -24,14 +24,14 @@ Next, you must install the service provider:
 // config/app.php
 'providers' => [
     ...
-    Jeroenherczeg\Dog\DogServiceProvider::class,
+    Jeroenherczeg\Dog\FollowServiceProvider::class,
 ];
 ```
 
 You can publish the migration with:
 
 ``` bash
-php artisan vendor:publish --provider="Jeroenherczeg\Dog\DogServiceProvider"
+php artisan vendor:publish --provider="Jeroenherczeg\Dog\FollowServiceProvider"
 ```
 
 After the migration has been published you can create the `followers` table by running the migrations:

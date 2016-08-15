@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\ClassFinder;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Testing\TestCase;
-use jeroenherczeg\dog\DogServiceProvider;
+use jeroenherczeg\dog\FollowServiceProvider;
 
 /**
  * Run tests from root directory with
@@ -83,7 +83,7 @@ class FollowableTest extends TestCase
     public function createApplication()
     {
         $app = require 'bootstrap/app.php';
-        $app->register(DogServiceProvider::class);
+        $app->register(FollowServiceProvider::class);
         $app->make(Kernel::class)->bootstrap();
 
         return $app;

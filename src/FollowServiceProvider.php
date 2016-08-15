@@ -3,7 +3,7 @@ namespace Jeroenherczeg\Dog;
 
 use Illuminate\Support\ServiceProvider;
 
-class DogServiceProvider extends ServiceProvider
+class FollowServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -12,9 +12,11 @@ class DogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $timestamp = date('Y_m_d_His', time());
+        
         $this->publishes([
-            __DIR__ . '/create_followers_table.php' => database_path('migrations/2016_08_15_000000_create_followers_table.php')
-        ], 'test');
+            __DIR__ . '/create_followers_table.php' => database_path('migrations/' . $timestamp . '_create_followers_table.php')
+        ], 'migrations');
     }
 
     /**
