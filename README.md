@@ -18,6 +18,18 @@ Via Composer
 $ composer require jeroenherczeg/dog
 ```
 
+Add new provider to config/app.php
+
+``` php
+ Jeroenherczeg\Dog\DogServiceProvider::class,
+```
+
+Run next command to add necessary migrations to your project
+
+``` bash
+$ php artisan vendor:publish --provider="Jeroenherczeg\Dog\DogServiceProvider"
+```
+
 ## Usage
 
 ``` php
