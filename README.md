@@ -92,6 +92,7 @@ If you discover any security related issues, please email jeroen@herczeg.be inst
 ## Credits
 
 - [Jeroen Herczeg][link-author]
+- Initialy forked from [Mohammed Isa][https://github.com/mohd-isa]
 - [All Contributors][link-contributors]
 
 ## License
