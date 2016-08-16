@@ -7,8 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Add a user following system like Twitter, Quora or any other social network that allows you to follow another user and have users follow you.
 
 ## Install
 
@@ -100,6 +99,10 @@ If you discover any security related issues, please email jeroen@herczeg.be inst
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Why Dog?
+
+Your dog follows you because it's highly social - has a powerful emotional need for companionship - and knows that you are super-cool. You are the source of all good things in its life: food, walks, rides, treats, toys. Who knows what amazing thing will happen wherever you're going?
 
 [ico-version]: https://img.shields.io/packagist/v/jeroenherczeg/dog.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
