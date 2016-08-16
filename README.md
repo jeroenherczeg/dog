@@ -54,6 +54,7 @@ class User extends Model
 ``` php
 // Follow User
 $user->follow(1)
+$user->follow([1,2,3,4])
 
 // Unfollow User
 $user->unfollow(1)
