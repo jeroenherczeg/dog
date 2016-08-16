@@ -52,23 +52,24 @@ class User extends Model
 ## Usage
 
 ``` php
-Follow a user.
-$user->follow($user2);
+// Follow User
+$user->follow(1)
 
-Unfollow a user.
-$user->unfollow($user2);
+// Unfollow User
+$user->unfollow(1)
+$user->unfollow([1,2,3,4])
 
-Check if user is following given user.
-$user->isFollowing($user2);
+// Get Followers
+$user->followers()
 
-Check if user is followed by given user.
-$user->isFollowedBy($user2);
+// Get Followings
+$user->followings()
 
-Followers relationship.
-$user->followers;
+// Check if Follow
+$user->isFollowing(1)
 
-Followings relationship.
-$user->followings;
+// Check if Followed By
+$user->isFollowedBy(1)
 ```
 
 ## Change log
