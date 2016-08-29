@@ -7,37 +7,69 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Add a user following system like Twitter, Quora or any other social network that allows you to follow another user and have users follow you.
 
 ## Install
 
-Via Composer
+You can install the package via composer:
 
 ``` bash
 $ composer require jeroenherczeg/dog
 ```
 
+Next, you must install the service provider:
+
+``` php
+// config/app.php
+'providers' => [
+    ...
+    Jeroenherczeg\Dog\FollowServiceProvider::class,
+];
+```
+
+You can publish the migration with:
+
+``` bash
+php artisan vendor:publish --provider="Jeroenherczeg\Dog\FollowServiceProvider"
+```
+
+After the migration has been published you can create the `followers` table by running the migrations:
+
+```bash
+php artisan migrate
+```
+
+Add the followable trait to the User model
+``` php
+use Jeroenherczeg\Dog\Followable;
+
+class User extends Model
+{
+    use Followable;
+    ...
+```
 ## Usage
 
 ``` php
-Follow a user.
-$user->follow($user2);
+// Follow User
+$user->follow(1)
+$user->follow([1,2,3,4])
 
-Unfollow a user.
-$user->unfollow($user2);
+// Unfollow User
+$user->unfollow(1)
+$user->unfollow([1,2,3,4])
 
-Check if user is following given user.
-$user->isFollowing($user2);
+// Get Followers
+$user->followers()
 
-Check if user is followed by given user.
-$user->isFollowedBy($user2);
+// Get Followings
+$user->followings()
 
-Followers relationship.
-$user->followers;
+// Check if Follow
+$user->isFollowing(1)
 
-Followings relationship.
-$user->followings;
+// Check if Followed By
+$user->isFollowedBy(1)
 ```
 
 ## Change log
@@ -61,11 +93,16 @@ If you discover any security related issues, please email jeroen@herczeg.be inst
 ## Credits
 
 - [Jeroen Herczeg][link-author]
+- Initialy forked from [Mohammed Isa](https://github.com/mohd-isa)
 - [All Contributors][link-contributors]
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Why Dog?
+
+Your dog follows you because it's highly social - has a powerful emotional need for companionship - and knows that you are super-cool. You are the source of all good things in its life: food, walks, rides, treats, toys. Who knows what amazing thing will happen wherever you're going?
 
 [ico-version]: https://img.shields.io/packagist/v/jeroenherczeg/dog.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
